@@ -120,6 +120,8 @@ public class Sampler extends GUIApplication {
 			}); 
 			viewObjects.add(cb);
 			
+			viewObjects.add(new Dog());
+			
 		}
 		
 		public void mouseDragged(MouseEvent m) {
