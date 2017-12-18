@@ -57,7 +57,7 @@ public class CatalogMaker {
 
 	}
 	
-	private List<String> testFileLoading() {
+	private void testFileLoading() {
 		Scanner in = new Scanner(System.in);
 		String fileName = "";
 		List<String> content = new ArrayList<String>();
@@ -75,7 +75,7 @@ public class CatalogMaker {
 
 
 
-					content.add(line);
+					String[] param = line.split(",");
 
 					/*
 					 * useful later:
@@ -91,4 +91,5 @@ public class CatalogMaker {
 			}
 		}
 	
+}
 }
