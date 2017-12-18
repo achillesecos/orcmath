@@ -9,46 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class CatalogMaker {
-	
-	private ArrayList<Apartments> catalog;
-	
-	public CatalogMaker() {
-		catalog = new ArrayList<Apartments>();
-		catalog.add(new Apartments("West End Apartments", "104 St" , "Manhattan Valley", 1000000));
-		catalog.add(new Apartments("West End Apartments", "104 St" , "Manhattan Valley", 1000000));
-		
-	}
-	
-	public static void main(String[] args) {
-		CatalogMaker c = new CatalogMaker();
-		System.out.println(c.getCSVContent());
-		Scanner in = new Scanner(System.in); 
-		c.saveContent("apartments.csv");
+
+public class FileLoadingConsole {
+
+	public static void main(String[] args){
+		List<String> content = testFileLoading();
+		displayContent(content);
+		testSaveContent("test.csv");
 	}
 
 
 
-	public String getCSVContent() {
-		String data = "name,description,amount,neighborhood,price\n";
-	
-		for(Apartments t : catalog) {
-			data += t + "\n";
-		}
-		return data;
-	}
-	
-	public void addNewItem(String name, String address, String neighborhood, int price){
-		this.catalog.add(new Apartments(name, address, neighborhood, price));
-		System.out.println("Added successfully");
-	}
-	
-	private void saveContent(String fileName) {
+	private static void testSaveContent(String fileName) {
 		try{    
-			FileWriter fw=new FileWriter(fileName);   
-			for(Apartments a:catalog) {
-				fw.write(a + "\n");    
-			}
+			FileWriter fw=new FileWriter(fileName);    
+			fw.write("This file was created programmatically.");    
 			fw.close();    
 			System.out.println("Success! File \""+fileName+"\" saved!");
 		}catch(IOException e){
@@ -56,8 +31,19 @@ public class CatalogMaker {
 		}
 
 	}
-	
-	private List<String> testFileLoading() {
+
+
+	private static void displayContent(List<String> content) {
+		//print the content:
+		for(String item : content){
+			System.out.println(item);
+		}
+
+	}
+
+
+
+	private static List<String> testFileLoading() {
 		Scanner in = new Scanner(System.in);
 		String fileName = "";
 		List<String> content = new ArrayList<String>();
@@ -90,5 +76,13 @@ public class CatalogMaker {
 				System.out.println("The file name you specified does not exist.");
 			}
 		}
-	
+
+
+
+		//close the Scanner
+
+		in.close();
+		return content;
+	}
 }
+
