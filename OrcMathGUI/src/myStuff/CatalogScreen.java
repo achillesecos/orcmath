@@ -31,10 +31,10 @@ public class CatalogScreen extends FullFunctionScreen {
 		descriptionField = new TextField(40,40,200,30,"Text Goes Here","description");
 		viewObjects.add(descriptionField);
 		
-		nameField = new TextField(140,40,200,30,"Text Goes Here","name");
+		nameField = new TextField(280,40,200,30,"Text Goes Here","name");
 		viewObjects.add(nameField);
 		
-		priceField = new TextField(240,40,200,30,"Text Goes Here","price");
+		priceField = new TextField(520,40,200,30,"Text Goes Here","price");
 		viewObjects.add(priceField);
 		
 		add = new Button(300, 300, 100, 100, "click here to buy", new Action() {
