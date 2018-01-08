@@ -4,19 +4,18 @@ import java.awt.Graphics2D;
 
 import guiTeacher.components.Component;
 
-public class ProgressAchilles extends Component implements ProgressInterfaceAchilles{
+public class ProgressJi extends Component implements ProgressInterfaceAchilles{
+
+	private boolean isGameOver = false;
 	
-	public ProgressAchilles(int x, int y, int w, int h) {
+	public ProgressJi(int x, int y, int w, int h) {
 		super(x, y, w, h);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void gameOver() {
-	
-	}
-
-	@Override
-	public void update(Graphics2D g) {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -30,6 +29,16 @@ public class ProgressAchilles extends Component implements ProgressInterfaceAchi
 	public int setSequenceSize() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void update(Graphics2D g) {
+		if(isGameOver) {
+			gameOver();
+		}else {
+			
+		}
+		
 	}
 
 }

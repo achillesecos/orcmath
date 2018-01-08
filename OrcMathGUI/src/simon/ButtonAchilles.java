@@ -14,29 +14,6 @@ public class ButtonAchilles extends Button implements ButtonInterfaceAchilles {
 		super(x, y, w, h, "", color, null);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public void drawButton(Graphics2D g, boolean hover){
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
-		drawShape(g, hover);
-		g.setColor(getForeground());
-		g.setFont(getFont());
-		FontMetrics fm = g.getFontMetrics();
-		
-		if(getText()!= null){
-			g.setColor(getForeground());
-			String t = getText();
-			//just in case text is too wide, cut off
-			int cutoff = t.length();
-			while(cutoff > 0 && fm.stringWidth(t) > getWidth()){
-				cutoff --;
-				t = t.substring(0,cutoff); 
-			}
-			g.drawString(t, (getWidth()-fm.stringWidth(t))/2, 
-					(getHeight()+fm.getHeight()-fm.getDescent())/2);
-		}
-		update();
-	}
 
 	@Override
 	public void setColor(Color blue) {
