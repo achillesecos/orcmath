@@ -107,6 +107,9 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 		roundNumber = 0;
 		viewObjects.add(progress);
 		viewObjects.add(label);
+		
+		
+		randomMove();
 	}
 
 	private MoveInterfaceAchilles randomMove() {
@@ -129,15 +132,11 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 	    // TODO Auto-generated method stub 
 	    return null; 
 	}
-	private Object getProgress() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	private void addButtons() {
 		int numberOfButtons = 5;
 		
-		buttons = new ButtonInterfaceAchilles[numberOfButtons];
+		buttons = new ButtonInterfaceAchilles[numberOfButtons-1];
 		
 		Color button1 = Color.blue;
 		Color button2 = Color.red;
