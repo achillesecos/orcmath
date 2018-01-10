@@ -9,7 +9,7 @@ import guiTeacher.components.TextLabel;
 public class SimonGameAchilles extends GUIApplication {
 	
 	private static SimonGameAchilles game;
-	private SimonGameAchilles screen;
+	private static SimonGameAchilles screen;
 	
 	private TextLabel textLabel;
 	private ButtonInterfaceAchilles[] buttonInterface;
@@ -27,7 +27,8 @@ public class SimonGameAchilles extends GUIApplication {
 
 	@Override
 	public void initScreen() {
-		SimonGameAchilles screen = new SimonGameAchilles(getWidth(), getHeight());
+		SimonGameAchilles.screen = new SimonGameAchilles(getWidth(), getHeight());
+		setScreen(screen);
 	}
 	
 	public static void main(String[] args) {
