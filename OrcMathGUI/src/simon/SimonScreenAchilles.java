@@ -150,6 +150,10 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 						else {
 							progress.gameOver();
 						}
+						if(sequenceIndex == arrayList.size()) {
+							Thread newRound = new Thread(SimonScreenAchilles.this);
+							newRound.start();
+						}
 					}
 				}
 			});
@@ -163,7 +167,7 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 		
 		
 		
-		
+		/*
 		addButtons();
 		for(ButtonInterfaceAchilles a: buttons){ 
 		    viewObjects.add(a); 
@@ -181,6 +185,7 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 		
 		
 		randomMove();
+		*/
 	}
 
 	private MoveInterfaceAchilles randomMove() {
