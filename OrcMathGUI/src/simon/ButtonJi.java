@@ -14,7 +14,7 @@ public class ButtonJi extends Button implements ButtonInterfaceAchilles{
 		super(x, y, w, h, "", null);
 		update();
 	}
-	
+	/*
 	public void drawButton(Graphics2D g, boolean hover){
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
@@ -37,7 +37,13 @@ public class ButtonJi extends Button implements ButtonInterfaceAchilles{
 		}
 		update();
 	}
-
+	*/
+	public void drawButton(Graphics2D g, boolean hover) {
+		g.drawOval(50, 50, 50, 50);
+		
+		//update();
+	}
+	
 	@Override
 	public void setColor(Color color) {
 		this.setBackground(color);
