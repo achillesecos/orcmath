@@ -4,7 +4,7 @@ import guiTeacher.interfaces.Visible;
 
 public interface ProgressInterfaceAchilles extends Visible {
 
-	void gameOver();
-	public int setRound();
-	public int setSequenceSize();
+	public void gameOver();
+	public int setRound(int round);
+	public int setSequenceSize(int size);
 }

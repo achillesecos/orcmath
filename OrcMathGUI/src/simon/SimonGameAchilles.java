@@ -30,7 +30,7 @@ public class SimonGameAchilles extends GUIApplication {
 		SimonGameAchilles screen = new SimonGameAchilles(getWidth(), getHeight());
 	}
 	
-	public static void main(String args) {
+	public static void main(String[] args) {
 		SimonGameAchilles game = new SimonGameAchilles(500, 500); 
 		Thread runner = new Thread(game);
 		runner.start();

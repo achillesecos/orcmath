@@ -6,6 +6,7 @@ import java.util.List;
 
 import guiPlayer.CatalogScreen;
 import guiTeacher.components.Action;
+import guiTeacher.components.Button;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
@@ -21,6 +22,16 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 	private boolean acceptingInput;
 	private int sequenceIndex;
 	private int lastSelectedButton;
+	private static int finalButton = 0;
+	private static Color[] colors;
+	private static boolean userInput;
+	
+	private Button button1;
+	private Button button2;
+	private Button button3;
+	private Button button4;
+	private Button button5;
+	private Button button6;
 	
 	public SimonScreenAchilles(int width, int height) {
 		super(width, height);
@@ -93,6 +104,66 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		
+		
+		roundNumber = 0;
+		finalButton = -1;
+		button1 = new Button(20,150,40,40,"", new Action() {
+			public void act() {
+				
+			}
+		});
+		
+		arrayList = new ArrayList<MoveInterfaceAchilles>();
+		addMoves(2);
+		textLabel = new TextLabel(100,200,250,50, "Round" + roundNumber);
+		viewObjects.add(textLabel);
+		
+		for(int i = 0; i < buttons.length; i++) {
+			buttons[i] = getAButton();
+			ButtonInterfaceAchilles currentButton = buttons[i];
+			Color currentColor = colors[i];
+			int currentI = colors[i];
+			currentButton.setColor(currentColor);
+			currentButton.setX(50);
+			currentButton.setY(i*20);
+			currentButton.setAction(new Action() {
+				
+				public void act() {
+					if(userInput) {
+						Thread flash = new Thread(new Runnable() {
+							public void run() {
+								currentButton.setColor(currentColor.brighter());
+								try {
+									Thread.sleep(800);
+								}
+								catch(InterruptedException e) {
+									e.printStackTrace();
+								}
+								currentButton.setColor(currentColor);
+							}
+						});
+						flash.start();
+						if(currentButton == arrayList.get(sequenceIndex).getButton()) {
+							sequenceIndex ++;
+						}
+						else {
+							progress.gameOver();
+						}
+					}
+				}
+			});
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
 		addButtons();
 		for(ButtonInterfaceAchilles a: buttons){ 
 		    viewObjects.add(a); 
@@ -131,6 +202,18 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 	private ProgressInterfaceAchilles getProgress() { 
 	    // TODO Auto-generated method stub 
 	    return null; 
+	}
+	
+	
+	public void addMoves(int numberOfMoves) {
+		for(int i = 0; i < numberOfMoves; i++) {
+			int index = (int)(Math.random()*buttons.length);
+			if(index == finalButton) {
+				i--;
+				continue;
+			}
+			arrayList.add(getMove(index));
+		}
 	}
 
 	private void addButtons() {

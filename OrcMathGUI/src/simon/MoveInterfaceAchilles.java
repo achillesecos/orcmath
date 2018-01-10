@@ -2,6 +2,6 @@ package simon;
 
 public interface MoveInterfaceAchilles {
 
-	ButtonInterfaceAchilles getButton();
+	public ButtonInterfaceAchilles getButton();
 
 }

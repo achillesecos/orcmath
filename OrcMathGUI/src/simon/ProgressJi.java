@@ -1,5 +1,6 @@
 package simon;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 import guiTeacher.components.Component;
@@ -20,17 +21,6 @@ public class ProgressJi extends Component implements ProgressInterfaceAchilles{
 		
 	}
 
-	@Override
-	public int setRound() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int setSequenceSize() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public void update(Graphics2D g) {
@@ -40,6 +30,18 @@ public class ProgressJi extends Component implements ProgressInterfaceAchilles{
 			g.setColor(Color.green);
 		}
 		
+	}
+
+	@Override
+	public int setRound(int round) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int setSequenceSize(int size) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

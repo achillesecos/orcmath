@@ -20,14 +20,15 @@ public class ProgressAchilles extends Component implements ProgressInterfaceAchi
 		
 	}
 
+
 	@Override
-	public int setRound() {
+	public int setRound(int round) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int setSequenceSize() {
+	public int setSequenceSize(int size) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
