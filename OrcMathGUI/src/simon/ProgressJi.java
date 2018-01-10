@@ -15,7 +15,8 @@ public class ProgressJi extends Component implements ProgressInterfaceAchilles{
 
 	@Override
 	public void gameOver() {
-		// TODO Auto-generated method stub
+		isGameOver = true;
+		update();
 		
 	}
 
@@ -34,9 +35,9 @@ public class ProgressJi extends Component implements ProgressInterfaceAchilles{
 	@Override
 	public void update(Graphics2D g) {
 		if(isGameOver) {
-			gameOver();
+			g.setColor(Color.red);
 		}else {
-			
+			g.setColor(Color.green);
 		}
 		
 	}
