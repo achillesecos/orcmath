@@ -11,8 +11,8 @@ import guiTeacher.components.Button;
 public class ButtonJi extends Button implements ButtonInterfaceAchilles{
 
 	public ButtonJi(int x, int y, int w, int h, String text, Action action) {
-		super(x, y, w, h, text, action);
-		// TODO Auto-generated constructor stub
+		super(x, y, w, h, "", null);
+		update();
 	}
 	
 	public void drawButton(Graphics2D g, boolean hover){
@@ -39,20 +39,22 @@ public class ButtonJi extends Button implements ButtonInterfaceAchilles{
 	}
 
 	@Override
-	public void setColor(Color blue) {
-		// TODO Auto-generated method stub
+	public void setColor(Color color) {
+		this.setBackground(color);
+		update();
 		
 	}
 
 	@Override
 	public void highlight() {
-		// TODO Auto-generated method stub
-		
+		this.setBackground(Color.yellow);
+		update();
 	}
 
 	@Override
 	public void dim() {
-		// TODO Auto-generated method stub
+		this.setBackground(this.darkgray);
+		update();
 		
 	}
 
