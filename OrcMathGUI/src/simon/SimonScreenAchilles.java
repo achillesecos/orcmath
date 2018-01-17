@@ -22,16 +22,17 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 	private boolean acceptingInput;
 	private int sequenceIndex;
 	private int lastSelectedButton;
+	private int testing;
 	private static int finalButton = 0;
-	private static Color[] colors;
-	private static boolean userInput;
+	//private static Color[] colors;
+	//private static boolean userInput;
 	
-	private Button button1;
-	private Button button2;
-	private Button button3;
-	private Button button4;
-	private Button button5;
-	private Button button6;
+	//private Button button1;
+	//private Button button2;
+	//private Button button3;
+	//private Button button4;
+	//private Button button5;
+	//private Button button6;
 	
 	public SimonScreenAchilles(int width, int height) {
 		super(width, height);
@@ -84,13 +85,20 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 
 	private void playSequence() {
 		ButtonInterfaceAchilles b = null;
+		try {
+			Thread.sleep(2000);
+		}
+		catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		for(int i = 0; i < arrayList.size(); i++) {
 			if(b != null) {
 				b.dim();
 				b.getButton();
 				b.highlight();
 				int sleepTime;
-				sleepTime = roundNumber + 1;
+				sleepTime = roundNumber + 2;
 				try{
 					Thread.sleep(800);
 				}
@@ -104,10 +112,24 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		addButtons();
+		for(ButtonInterfaceAchilles b: buttons) {
+			viewObjects.add(b);
+		}
+		progress = getProgress();
 		
-		
+		textLabel = new TextLabel(50,330,300,40, "SIMON");
+		arrayList = new ArrayList<MoveInterfaceAchilles>();
+		lastSelectedButton = -1;
+		arrayList.add(randomMove());
+		arrayList.add(randomMove());
 		roundNumber = 0;
-		finalButton = -1;
+		viewObjects.add(progress);
+		viewObjects.add(textLabel);
+		
+		//roundNumber = 0;
+		
+		/*finalButton = -1; 
 		button1 = new Button(20,150,40,40,"", new Action() {
 			public void act() {
 				
@@ -161,7 +183,7 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 			
 			
 			
-			
+		*/	
 		}
 		
 		
@@ -185,8 +207,8 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 		
 		
 		randomMove();
-		*/
-	}
+		
+	}*/
 
 	private MoveInterfaceAchilles randomMove() {
 		int bIndex = (int)(Math.random()* buttons.length);
@@ -197,17 +219,13 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 	}
 
 	private MoveInterfaceAchilles getMove(int bIndex) {
-		// TODO Auto-generated method stub
-		return null;
+		return new MoveJi(buttons[bIndex]);
 	}
 
 	/**
 	Placeholder until partner finishes implementation of ProgressInterface
 	*/
-	private ProgressInterfaceAchilles getProgress() { 
-	    // TODO Auto-generated method stub 
-	    return null; 
-	}
+
 	
 	
 	public void addMoves(int numberOfMoves) {
@@ -224,7 +242,7 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 	private void addButtons() {
 		int numberOfButtons = 5;
 		
-		buttons = new ButtonInterfaceAchilles[numberOfButtons-1];
+		buttons = new ButtonInterfaceAchilles[numberOfButtons];
 		
 		Color button1 = Color.blue;
 		Color button2 = Color.red;
@@ -277,8 +295,11 @@ public class SimonScreenAchilles extends ClickableScreen implements Runnable {
 
 	private ButtonInterfaceAchilles getAButton() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ButtonAchilles(130, 230, 40, 40, "", Color.blue, null);
 	}
 
-
+	
+	private ProgressInterfaceAchilles getProgress() {
+		return new ProgressAchilles(10,10,300, 40);
+	}
 }

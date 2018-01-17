@@ -43,7 +43,7 @@ public abstract class GUIApplication extends JFrame implements Runnable, Compone
 
 
 	public GUIApplication(int width, int height){
-		super();
+		//super();
 		scaleWithWindow = true;
 		setBounds(20, 20, width, height);
 		initScreen();
