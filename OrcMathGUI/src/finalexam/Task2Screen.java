@@ -14,17 +14,13 @@ public class Task2Screen extends ClickableScreen{
 	private Thread count = new Thread();
 	private Button theButton;
 	private TextArea textbox;
+	private TextArea counterText;
 	private int score = 0;
 	private boolean isTrue = false;
 	
-	private boolean stopCounting;
+	private boolean counterDone = false;
 	
 	
-	private TextArea counterText;
-	
-	//private TextArea timer;
-	
-	private int buttonClickedNums = 0;
 	
 	public Task2Screen(int width, int height) {
 		super(width, height);
@@ -35,50 +31,60 @@ public class Task2Screen extends ClickableScreen{
 	public void initAllObjects(List<Visible> viewObjects) {
 		counterText = new TextArea(50, 50, 100, 100, "Countdown");
 		
-		//timer = new TextArea(200, 200, 50, 50, "");
 		
 		theButton = new Button(100,100,100,100, "READY?", Color.BLUE, new Action() {
 			public void act(){
+				
+				if(isTrue) {
+					score ++;
+					textbox.setText("Score: " + score);
+				}
+				
 				Thread count = new Thread(new Runnable() {
 					public void run() {
 						for(int i = 4; i > 0; i--) {
-						try {
-							Thread.sleep(1000);
+							try{
+								Thread.sleep(1000);
+							}
+							catch(InterruptedException e){
+								e.printStackTrace();
+							}
+							
+							counterText.setText(Integer.toString(i-1));
+							if(i == 1) {
+								counterText.setText("GO!");
+								theButton.setText("Click me");
+								isTrue = true;
+							}
 						}
-						catch(InterruptedException e) {
-							e.printStackTrace();
-						}
-						
-						counterText.setText(Integer.toString(i-1));
-						if(i == 1) {
-							counterText.setText("GO!");						}
-						}
-						
+						for(int i = 6; i > 0; i--){
+							try {
+								Thread.sleep(1000);
+							}
+							catch(InterruptedException e){
+								e.printStackTrace();
+							}
+							counterText.setText(Integer.toString(i-1));
+							if(i == 1) {
+								theButton.setText("Done");
+								isTrue = false;
+							}
 					}
-				});
-				count.start();
-				/*
-				for(int i = 6; i > 0; i--) {
-					try {
-						Thread.sleep(1000);
-					}
-					catch(InterruptedException e){
-						e.printStackTrace();
-					}
-					counterText.setText(Integer.toString(i-1));
-					
-					
 				}
-				*/
+				});
+				if(!counterDone) {
+				count.start();
+				counterDone = true;
+				}
 			}
 		});
 		
 		
-		textbox = new TextArea(200, 100, 100, 100, "Score is: " + score);
+		textbox = new TextArea(300, 100, 100, 100, "Score: " + score);
 		viewObjects.add(theButton);
 		viewObjects.add(textbox);
 		viewObjects.add(counterText);
-		//viewObjects.add(timer);
+		
 
 		
 		
