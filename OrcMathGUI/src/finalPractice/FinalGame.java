@@ -20,9 +20,10 @@ public class FinalGame extends GUIApplication {
 	}
 
 	public static void main(String[] args) {
-		FinalGame game = new FinalGame(500,500);
-		Thread start = new Thread(game);
+		FinalGame game = new FinalGame(500, 500);
+		Thread start = new Thread();
 		start.start();
+
 	}
 
 }

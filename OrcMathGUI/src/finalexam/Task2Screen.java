@@ -29,6 +29,9 @@ public class Task2Screen extends ClickableScreen{
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		
+		textbox = new TextArea(300, 100, 100, 100, "Score: " + score);
+		
 		counterText = new TextArea(50, 50, 100, 100, "Countdown");
 		
 		
@@ -80,7 +83,6 @@ public class Task2Screen extends ClickableScreen{
 		});
 		
 		
-		textbox = new TextArea(300, 100, 100, 100, "Score: " + score);
 		viewObjects.add(theButton);
 		viewObjects.add(textbox);
 		viewObjects.add(counterText);
